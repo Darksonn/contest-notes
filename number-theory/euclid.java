@@ -10,10 +10,9 @@ long[] euclid(long a, long b) {
   return new long[] { x, y, a };
 }
 long gcd(long a, long b) {
-  if (a == 0) return b;
   while (b != 0) {
-    long t = a;
-    a = b % a; b = t;
+    long bb = b;
+    b = a % b; a = bb;
   }
   return a;
 }

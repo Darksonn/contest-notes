@@ -46,6 +46,21 @@
 \pagenumbering{arabic}
 
 \begin{multicols*}{2}
+
+\section{Data structures}
+\subsection{Fenwick tree}
+Sum of a range. Both operations are \(O(\log n)\).
+\code{data-structures/fenwick.java}
+\subsection{Segment tree}
+Update any value and perform interval queries.
+\code{data-structures/segment-tree.java}
+\subsection{Union find}
+Also known as disjoint set.
+\code{data-structures/union-find.java}
+\subsection{Minimal spanning tree}
+Returns a spanning forest in the given set with minimal weight.
+\code{graph/kruskal.java}
+
 \section{Number theory}
 \subsection{Euclid}
 Computes \(x\), \(y\) and \(d\) such that \(xa + yb = d = \operatorname{gcd}(a,b)\). \\
@@ -105,6 +120,32 @@ Computes the minimum cost maximum flow in a graph using the successive shortest 
 algorithm.
 \code{graph/min-cost-max-flow.java}
 
+\section{Matching}
+A matching in a bipartite graph is a set of edges such that no edge share an endpoint.
+You can find the largest possible matching using max-flow.
+\subsection{Hall's marriage theorem}
+Given a bipartite graph with nodes in \(X\) and \(Y\), the graph has a maximal matching
+if and only if \(|N(S)| \geq |S|\) for any subset \(S \subseteq X\). Here \(N(S)\)
+denotes the set of nodes in \(Y\) next to a node in \(S\).
+\subsection{Blossom algorithm}
+The blossoms algorithm can find a maximum matching in an arbitrary graph. An exposed
+vertex is a vertex, which isn't the endpoint of any marked edge. A blossom is an
+\(2k+1\) length cycle with \(k\) marked edges such that one of the verticies has an even
+length alternating path (the stem) to an exposed vertex.
+
+The basic algorithm is to find a path between two exposed verticies and augmenting the
+path by swapping the matching along the path. If no such path exists, then the matching
+is optimal.
+
+\section{Linear algebra}
+\subsection{Solve linear equations}
+Find any solution of \(Ax = b\) in \(O(n^2m)\) time. Returns rank of solution, or \(-1\)
+if no solution is found. Data in \texttt{A} and \texttt{b} is lost.
+\code{linear-algebra/linear-system.java}
+\subsection{Partial linear equations}
+To get all uniquely determined values back, make the following changes. Non-unique values
+are left as NaN.
+\code{linear-algebra/partial-linear-system.java}
 
 \section{Geometry}
 \subsection{Convex hull}
@@ -119,15 +160,6 @@ Finds the area of a polygon using the shoelace formula. Returns twice the signed
 which is negative if points are in clockwise order.
 \code{geometry/polygon-area.java}
 
-\section{Linear algebra}
-\subsection{Solve linear equations}
-Find any solution of \(Ax = b\) in \(O(n^2m)\) time. Returns rank of solution, or \(-1\)
-if no solution is found. Data in \texttt{A} and \texttt{b} is lost.
-\code{linear-algebra/linear-system.java}
-\subsection{Partial linear equations}
-To get all uniquely determined values back, make the following changes. Non-unique values
-are left as NaN.
-\code{linear-algebra/partial-linear-system.java}
 \end{multicols*}
 
 \end{document}
