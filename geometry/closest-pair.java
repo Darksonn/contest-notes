@@ -32,7 +32,7 @@ static PointPair cpAux(Point[] points, int off, int end) {
   return best;
 }
 static PointPair bf(Point[] points, int off, int end) {
-  PointPair best = new PointPair(points[0], points[1]);
+  PointPair best = new PointPair(points[off], points[off+1]);
   for (int i = off; i < end; ++i) {
     for (int j = i+1; j < end; ++j) {
       best.offer(points[i], points[j]);
