@@ -1,0 +1,126 @@
+\documentclass[10pt,a4paper,landscape,oneside]{amsart}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{fullpage}
+\usepackage[scaled]{beramono}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{fix-cm}
+
+\usepackage{minted}
+\newcommand{\code}[1]{\inputminted[fontsize=\large,tabsize=2,baselinestretch=1]{java}{#1}}
+
+\pagestyle{fancy}
+\lhead{The Floor is Made of Java, University of Copenhagen}
+\rhead{\thepage}
+\chead{}
+\setlength{\headheight}{15.2pt}
+
+\begin{document}
+\pagestyle{empty}
+\pagenumbering{gobble}
+
+\begin{center}
+	\strut
+	\vspace{1cm}\\
+	\includegraphics[width=3cm]{ku.eps}
+	\vspace{0.2cm}\\
+	{\Huge University of Copenhagen\\}
+	{\fontsize{40}{40}\selectfont The Floor is Made of Java\\}
+	\vspace{0.5cm}
+	{\Large Alice Ryhl, Carl Dybdahl, Jonas Klausen\\}
+	\vfill
+	{\huge NWERC 2019}\\
+	\vspace{1cm}
+	{\Large \today}\\
+	\vspace{1cm}
+\end{center}
+\clearpage
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\begin{multicols*}{2}
+\section{Number theory}
+\subsection{Euclid}
+Computes \(x\), \(y\) and \(d\) such that \(xa + yb = d = \operatorname{gcd}(a,b)\). \\
+Note that you can find \texttt{lcm} using \(\operatorname{lcm}(a,b) = \frac{a \cdot
+b}{\operatorname{gcd}(a,b)}\).
+\code{number-theory/euclid.java}
+\subsection{Modular inverse}
+Assumes that \(a\) and \(mod\) are relatively prime.
+\code{number-theory/mod-inverse.java}
+\subsection{Modular power}
+Computes \texttt{a\textsuperscript e \% mod}.
+\code{number-theory/mod-pow.java}
+\subsection{Chinese remainder theorem}
+The \texttt{crt2} function finds \(x\) with \(x \equiv a \mod m\) and \(x \equiv b \mod
+n\), while the \texttt{crt} function combines it to solve it for any number of equations.
+Returns \texttt{true} if it found a solution.
+\code{number-theory/crt.java}
+\subsection{Prime sieve}
+Compute all primes up to some number. Runs in \(O(n \log n \log \log n)\).
+\code{number-theory/sieve.java}
+\subsection{Binomial coefficients}
+Compute the binomial coefficients.
+\code{number-theory/binom.java}
+\subsection{Catalan numbers}
+Compute the \(n\) first Catalan numbers. These can be used for various things:
+\begin{enumerate}
+  \item Number of expressions containing \(n\) pairs of parentheses which are correctly
+    matched.
+  \item Number of full binary trees with \(n+1\) leaves.
+  \item Number of lattice paths in \(n \times n\) square that stay below the diagonal.
+  \item A convex polygon with \(n+2\) sides can be cut into \(n\) triangles in \(C_n\)
+    ways.
+  \item Number of permutations with no three-term increasing subsequence.
+\end{enumerate}
+This uses the recursive formula \(C_0 = 1\) and \(C_{n+1} = \frac{2(2n+1)}{n+2} C_n\).
+Could also use \(C_n = \frac{1}{n+1}\binom{2n}{n} = \binom{2n}{n} - \binom{2n}{n+1}\).
+\code{number-theory/catalan.java}
+
+\section{Graph algorithms}
+\subsection{Shortest path, negative loops}
+A variant of Bellman Ford that computes shortest path. Marks unreachable nodes with
+\verb|MAX_VALUE| and nodes reachable from a negative loop with \verb|MIN_VALUE|.
+If there are no negative weight
+\code{graph/shortest-path.java}
+\subsection{Shortest path, no negative loops}
+A simpler version of Bellman Ford that never terminates when given a negative loop.
+\code{graph/shortest-path-noloop.java}
+\subsection{Floyd Warshall}
+Shortest path between all pairs of verticies. Negative weights are allowed. Runs in
+\(O(n^3)\).
+\code{graph/floyd-warshall.java}
+
+\section{Geometry}
+\subsection{Convex hull}
+Computes the convex hull in counter clockwise order in \(O(n \log n)\) time.
+Use \verb|>=| instead of \verb|<=| to get clockwise order.
+\code{geometry/convex-hull.java}
+\subsection{Closest pair}
+Find the closest pair of points in \(O(n (\log n)^2)\) time.
+\code{geometry/closest-pair.java}
+\subsection{Polygon area}
+Finds the area of a polygon using the shoelace formula. Returns twice the signed area,
+which is negative if points are in clockwise order.
+\code{geometry/polygon-area.java}
+
+\section{Linear algebra}
+\subsection{Solve linear equations}
+Find any solution of \(Ax = b\) in \(O(n^2m)\) time. Returns rank of solution, or \(-1\)
+if no solution is found. Data in \texttt{A} and \texttt{b} is lost.
+\code{linear-algebra/linear-system.java}
+\subsection{Partial linear equations}
+To get all uniquely determined values back, make the following changes. Non-unique values
+are left as NaN.
+\code{linear-algebra/partial-linear-system.java}
+\end{multicols*}
+
+\end{document}
+% vim:spelllang=en
