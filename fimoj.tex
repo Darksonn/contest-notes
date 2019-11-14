@@ -100,6 +100,11 @@ Could also use \(C_n = \frac{1}{n+1}\binom{2n}{n} = \binom{2n}{n} - \binom{2n}{n
 \code{number-theory/catalan.java}
 
 \section{Graph algorithms}
+\subsection{Strongly connected components}
+Compute the strongly connected components of a directed graph in linear time. Each
+component will have exactly one node with \verb|assignment[node] == node|, and all other
+nodes in the same component will be assigned the same value.
+\code{graph/strongly-connected.java}
 \subsection{Shortest path, negative loops}
 A variant of Bellman Ford that computes shortest path. Marks unreachable nodes with
 \verb|MAX_VALUE| and nodes reachable from a negative loop with \verb|MIN_VALUE|.
