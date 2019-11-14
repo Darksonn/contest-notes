@@ -1,9 +1,9 @@
-public static class BellmanFord {
+public static class SPFA {
   int N;
   ArrayList<Edge>[] edges;
   long[] distance;
 
-  public BellmanFord(int N) {
+  public SPFA(int N) {
     this.N = N;
     this.distance = new long[N];
     this.edges = new ArrayList[N];
@@ -14,7 +14,7 @@ public static class BellmanFord {
   public void addEdge(int from, int to, long cost) {
     edges[from].add(new Edge(from, to, cost));
   }
-  public void bellmanFord(int source) {
+  public void spfa(int source) {
     for (int i = 0; i < N; ++i)
       distance[i] = Long.MAX_VALUE;
     distance[source] = 0;

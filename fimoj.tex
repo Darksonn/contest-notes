@@ -107,11 +107,11 @@ nodes in the same component will be assigned the same value.
 \code{graph/strongly-connected.java}
 \subsection{Shortest path, negative loops}
 A variant of Bellman Ford that computes shortest path. Marks unreachable nodes with
-\verb|MAX_VALUE| and nodes reachable from a negative loop with \verb|MIN_VALUE|.
-If there are no negative weight
+\verb|MAX_VALUE| and nodes reachable through a negative loop with \verb|MIN_VALUE|.
 \code{graph/shortest-path.java}
 \subsection{Shortest path, no negative loops}
-A simpler version of Bellman Ford that never terminates when given a negative loop.
+A simpler version of the previous algorithm that never assumes no negative loops exist.
+This implementation will loop forever if a negative loop is encountered.
 \code{graph/shortest-path-noloop.java}
 \subsection{Floyd Warshall}
 Shortest path between all pairs of verticies. Negative weights are allowed. Runs in

@@ -1,9 +1,9 @@
-public static class ShortestPath {
+public static class SPFA {
   int N;
   ArrayList<Edge>[] edges;
   long[] distance; // or double
 
-  public ShortestPath(int N) {
+  public SPFA(int N) {
     this.N = N;
     this.distance = new long[N];
     this.edges = new ArrayList[N];
@@ -14,7 +14,7 @@ public static class ShortestPath {
   public void addEdge(int from, int to, long cost) {
     edges[from].add(new Edge(from, to, cost));
   }
-  public void shortestPath(int source) {
+  public void spfa(int source) {
     // or Double.POSITIVE_INFINITY
     for (int i = 0; i < N; ++i)
       distance[i] = Long.MAX_VALUE;
