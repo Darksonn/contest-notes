@@ -115,6 +115,10 @@ Shortest path between all pairs of verticies. Negative weights are allowed. Runs
 \subsection{Maximum flow}
 Computes the maximum flow in a graph.
 \code{graph/max-flow.java}
+\subsection{Minimum cut}
+After running max-flow, the left side of a min-cut from the source to the sink is given
+by all vertices reachable from the source, only traversing edges with positive residual
+capacity.
 \subsection{Minimum cost maximum flow}
 Computes the minimum cost maximum flow in a graph using the successive shortest path
 algorithm.
@@ -148,6 +152,22 @@ are left as NaN.
 \code{linear-algebra/partial-linear-system.java}
 
 \section{Geometry}
+\subsection{Triangles}
+Given side lengths \(a, b, c\):
+\begin{description}
+  \item[Semiperimeter] \(p = \tfrac{1}{2} (a+b+c)\).
+  \item[Area] \(A = \sqrt{p (p-a)(p-b)(p-c)}\).
+  \item[Circumradius] \(R = \dfrac{abc}{4A}\).
+  \item[Inradius] \(r = A / p\).
+  \item[Law of sines]
+    \(\dfrac{\sin \alpha}a = \dfrac{\sin \beta}b = \dfrac{\sin \gamma}c = \dfrac1{2R}\).
+  \item[Law of cosines] \(a^2 = b^2 + c^2 - 2bc \cos\alpha\).
+\end{description}
+
+\subsection{2D point class}
+Various utility functions for computational geometry.
+\code{geometry/geometry.java}
+
 \subsection{Convex hull}
 Computes the convex hull in counter clockwise order in \(O(n \log n)\) time.
 Use \verb|>=| instead of \verb|<=| to get clockwise order.
