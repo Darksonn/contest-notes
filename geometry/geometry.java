@@ -63,7 +63,7 @@ boolean onSegment(Point s, Point e, Point p) {
   //    s.sub(p).dot(e.sub(p)) <= 0;
   return segDist(s, e, p) < 1e-10;
 }
-// All intersections of the circles.
+// Compute the intersections of the given pair of circles.
 Point[] circleInter(Point a, Point b, double r1, double r2) {
   if (a.equals(b)) return new Point[0]; // ignoring r1 == r2
   Point vec = b.sub(a);
