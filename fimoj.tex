@@ -118,12 +118,9 @@ Shortest path between all pairs of verticies. Negative weights are allowed. Runs
 \(O(n^3)\).
 \code{graph/floyd-warshall.java}
 \subsection{Maximum flow}
-Computes the maximum flow in a graph.
+Computes the maximum flow in a graph. When the algorithm finishes, the min cut can be
+found in the \texttt{visited} array.
 \code{graph/max-flow.java}
-\subsection{Minimum cut}
-After running max-flow, the left side of a min-cut from the source to the sink is given
-by all vertices reachable from the source, only traversing edges with positive residual
-capacity.
 \subsection{Minimum cost maximum flow}
 Computes the minimum cost maximum flow in a graph using the successive shortest path
 algorithm.

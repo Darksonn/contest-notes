@@ -1,6 +1,5 @@
 static class MaxFlow {
   ArrayList<Edge>[] edges;
-  int[] level;
   boolean[] vis;
   long maxCap = 0;
   public MaxFlow(int N) {
@@ -49,7 +48,8 @@ static class MaxFlow {
   }
 }
 static class Edge {
-  // Only include base if you need the actual flow
+  // cap is the residual capacity
+  // base is the original capacity
   long cap, base;
   int from, to, index;
   public Edge(int from, int to, long cap, int index) {
